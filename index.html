@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نشاط مراجعة تقنية المعلومات - عاشر (أكملي الفراغ)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff5e9c;
+            --secondary: #ff8c6b;
+            --accent: #6c5ce7;
+            --bg-color: #fff5f8;
+            --container-bg: #ffffff;
+            --text-color: #2d3436;
+            --pycharm-bg: #2b2b2b;
+            --pycharm-header: #3c3f41;
+            --pycharm-gutter: #313335;
+            --pycharm-text: #a9b7c6;
+            --pycharm-keyword: #cc7832;
+            --pycharm-string: #6a8759;
+            --pycharm-func: #8888c6;
+            --pycharm-num: #6897bb;
+            --console-bg: #1e1f22;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(#ffd1e3 12%, transparent 13%), radial-gradient(#ffe3d8 12%, transparent 13%);
+            background-size: 28px 28px;
+            background-position: 0 0, 14px 14px;
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            background: var(--container-bg);
+            padding: 35px;
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(255, 94, 156, 0.18);
+            border-top: 12px solid var(--primary);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 28px;
+            border-radius: 18px;
+            text-align: center;
+            margin-bottom: 35px;
+            box-shadow: 0 6px 20px rgba(255, 94, 156, 0.25);
+        }
+
+        .header h1 {
+            margin: 0 0 8px 0;
+            font-size: 28px;
+            font-weight: 800;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.15);
+        }
+
+        .header p {
+            margin: 0 0 20px 0;
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .student-info {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .student-info input {
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 2px solid rgba(255,255,255,0.8);
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            outline: none;
+            width: 260px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            transition: 0.3s;
+        }
+
+        .student-info input:focus {
+            border-color: #ffeaa7;
+            box-shadow: 0 0 0 4px rgba(255, 234, 167, 0.4);
+        }
+
+        .question-card {
+            background-color: #fafbff;
+            padding: 24px;
+            margin-bottom: 30px;
+            border-radius: 18px;
+            border-right: 7px solid var(--accent);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            transition: transform 0.2s;
+        }
+
+        .question-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .question-header h3 {
+            margin: 0;
+            color: var(--accent);
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+        .score-badge {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            color: #2d3436;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        }
+
+        .q-desc {
+            font-size: 16px;
+            margin: 0 0 15px 0;
+            line-height: 1.6;
+        }
+
+        code.inline-code {
+            background: #eef2ff;
+            color: #d63031;
+            padding: 2px 7px;
+            border-radius: 5px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14px;
+            direction: ltr;
+            display: inline-block;
+        }
+
+        /* PyCharm IDE Simulation */
+        .pycharm-ide {
+            background-color: var(--pycharm-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 15px 0;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            direction: ltr;
+            text-align: left;
+            font-family: 'Fira Code', 'Courier New', monospace;
+        }
+
+        .pycharm-top-bar {
+            background-color: var(--pycharm-header);
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #1e1e1e;
+        }
+
+        .pycharm-tab {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #dcdcdc;
+            font-size: 13px;
+            background: #2b2b2b;
+            padding: 4px 12px;
+            border-radius: 6px 6px 0 0;
+            border-bottom: 2px solid #4a88c7;
+        }
+
+        .py-icon {
+            color: #ffd43b;
+            font-weight: bold;
+        }
+
+        .btn-run {
+            background-color: #365880;
+            color: #59a869;
+            border: 1px solid #4c708c;
+            padding: 5px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+
+        .btn-run:hover {
+            background-color: #436b99;
+            color: #73d186;
+        }
+
+        .pycharm-editor {
+            display: flex;
+            padding: 15px 0;
+            font-size: 15px;
+            line-height: 2.1;
+            color: var(--pycharm-text);
+        }
+
+        .line-numbers {
+            background-color: var(--pycharm-gutter);
+            color: #606366;
+            padding: 0 14px;
+            text-align: right;
+            user-select: none;
+            border-right: 1px solid #3c3f41;
+        }
+
+        .code-area {
+            padding: 0 18px;
+            flex: 1;
+            overflow-x: auto;
+        }
+
+        .code-line {
+            white-space: nowrap;
+        }
+
+        .kw { color: var(--pycharm-keyword); font-weight: 600; }
+        .str { color: var(--pycharm-string); }
+        .fn { color: var(--pycharm-func); }
+        .num { color: var(--pycharm-num); }
+
+        .blank-input {
+            background-color: #3c3f41;
+            color: #ffffff;
+            border: 1.5px dashed #6897bb;
+            border-radius: 5px;
+            padding: 2px 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 14.5px;
+            outline: none;
+            transition: 0.2s;
+            text-align: center;
+        }
+
+        .blank-input:focus {
+            border: 1.5px solid #59a869;
+            background-color: #45494a;
+            box-shadow: 0 0 8px rgba(89, 168, 105, 0.4);
+        }
+
+        /* PyCharm Run Console */
+        .pycharm-console {
+            background-color: var(--console-bg);
+            border-top: 2px solid #3c3f41;
+            padding: 12px 18px;
+            font-size: 14px;
+            color: #bbbbbb;
+        }
+
+        .console-header {
+            font-size: 12px;
+            color: #808080;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border-bottom: 1px solid #2d2f34;
+            padding-bottom: 4px;
+        }
+
+        .console-path {
+            color: #6a8759;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+
+        .console-output {
+            color: #ffffff;
+            font-weight: 600;
+            min-height: 22px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+        }
+
+        .console-placeholder {
+            color: #6c757d;
+            font-style: italic;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 13px;
+        }
+
+        .console-error {
+            color: #ff6b68;
+        }
+
+        .feedback {
+            margin-top: 12px;
+            padding: 14px 18px;
+            border-radius: 10px;
+            display: none;
+            font-size: 15px;
+            line-height: 1.6;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+        .feedback.correct { background-color: #d4edda; color: #155724; border-right: 5px solid #28a745; }
+        .feedback.partial { background-color: #fff3cd; color: #856404; border-right: 5px solid #ffc107; }
+        .feedback.incorrect { background-color: #f8d7da; color: #721c24; border-right: 5px solid #dc3545; }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 2px dashed #ffb8d1;
+        }
+
+        .total-score {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        button.btn-finish {
+            background: linear-gradient(135deg, #00b894, #00cec9);
+            color: white;
+            border: none;
+            padding: 16px 42px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 18px;
+            font-family: inherit;
+            font-weight: 800;
+            box-shadow: 0 6px 20px rgba(0, 184, 148, 0.35);
+            transition: 0.3s;
+        }
+
+        button.btn-finish:hover { transform: scale(1.04); }
+
+        .email-instructions {
+            display: none;
+            margin-top: 25px;
+            background: #f0f7ff;
+            padding: 22px;
+            border-radius: 14px;
+            border: 2px solid #74b9ff;
+        }
+
+        .email-instructions a {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 10px 22px;
+            background: #0984e3;
+            color: white;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; border: none; padding: 10px; }
+            .btn-run, .btn-finish { display: none !important; }
+            .question-card { break-inside: avoid; border: 1px solid #ddd; }
+            .blank-input { border: 1px solid #999; background: #2b2b2b !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .pycharm-ide, .pycharm-console { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .email-instructions { display: block !important; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>✨ مراجعة للاختبار: تقنية المعلومات (الصف العاشر) ✨</h1>
+        <p>أكملي الفراغات البرمجية في محرر PyCharm ثم اضغطي على زر التشغيل <b>▶ تشغيل البرنامج</b> لمشاهدة النتيجة!</p>
+        <div class="student-info">
+            <input type="text" id="studentName" placeholder="🌸 اكتبي اسمكِ الثلاثي هنا">
+            <input type="text" id="studentClass" placeholder="📚 الصف (مثال: 10 / 1)">
+        </div>
+    </div>
+
+    <!-- السؤال 1 -->
+    <div class="question-card" id="q1">
+        <div class="question-header">
+            <h3>1. المتغيرات (Variables)</h3>
+            <span class="score-badge">الدرجة: 2</span>
+        </div>
+        <p class="q-desc">أنشئي متغير اسمه <code class="inline-code">year</code> قيمته السنة الحالية (<code class="inline-code">2026</code>) وقومي بطباعة المتغير.</p>
+        <div class="pycharm-ide">
+            <div class="pycharm-top-bar">
+                <div class="pycharm-tab"><span class="py-icon">🐍</span> ex1.py</div>
+                <button class="btn-run" onclick="runCode(1)">▶ تشغيل البرنامج (Run)</button>
+            </div>
+            <div class="pycharm-editor">
+                <div class="line-numbers">1<br>2</div>
+                <div class="code-area">
+                    <div class="code-line"><input type="text" class="blank-input" id="q1_b1" style="width: 85px;" placeholder="اسم المتغير"> = <span class="num">2026</span></div>
+                    <div class="code-line"><span class="fn">print</span>(<input type="text" class="blank-input" id="q1_b2" style="width: 85px;" placeholder="المتغير">)</div>
+                </div>
+            </div>
+            <div class="pycharm-console">
+                <div class="console-header"><span>Run: ex1</span></div>
+                <div class="console-path">C:\Users\Student\PycharmProjects\g10review\venv\Scripts\python.exe ex1.py</div>
+                <div class="console-output" id="out1"><span class="console-placeholder">اضغطي على زر ▶ تشغيل البرنامج لعرض المخرجات هنا...</span></div>
+            </div>
+        </div>
+        <div class="feedback" id="feed1"></div>
+    </div>
+
+    <!-- السؤال 2 -->
+    <div class="question-card" id="q2">
+        <div class="question-header">
+            <h3>2. التعرف على نوع المتغير</h3>
+            <span class="score-badge">الدرجة: 2</span>
+        </div>
+        <p class="q-desc">أظهري نوع المتغير <code class="inline-code">year</code> باستخدام الدالة المناسبة.</p>
+        <div class="pycharm-ide">
+            <div class="pycharm-top-bar">
+                <div class="pycharm-tab"><span class="py-icon">🐍</span> ex1_type.py</div>
+                <button class="btn-run" onclick="runCode(2)">▶ تشغيل البرنامج (Run)</button>
+            </div>
+            <div class="pycharm-editor">
+                <div class="line-numbers">1<br>2<br>3</div>
+                <div class="code-area">
+                    <div class="code-line">year = <span class="num">2026</span></div>
+                    <div class="code-line"><span class="fn">print</span>(year)</div>
+                    <div class="code-line"><span class="fn">print</span>(<input type="text" class="blank-input" id="q2_b1" style="width: 75px;" placeholder="الدالة">(year))</div>
+                </div>
+            </div>
+            <div class="pycharm-console">
+                <div class="console-header"><span>Run: ex1_type</span></div>
+                <div class="console-path">C:\Users\Student\PycharmProjects\g10review\venv\Scripts\python.exe ex1_type.py</div>
+                <div class="console-output" id="out2"><span class="console-placeholder">اضغطي على زر ▶ تشغيل البرنامج لعرض المخرجات هنا...</span></div>
+            </div>
+        </div>
+        <div class="feedback" id="feed2"></div>
+    </div>
+
+    <!-- السؤال 3 -->
+    <div class="question-card" id="q3">
+        <div class="question-header">
+            <h3>3. العمليات الحسابية</h3>
+            <span class="score-badge">الدرجة: 3</span>
+        </div>
+        <p class="q-desc">قومي بجمع وضرب وقسمة المتغيرين <code class="inline-code">a</code> و <code class="inline-code">b</code> واطبعي النتيجة.</p>
+        <div class="pycharm-ide">
+            <div class="pycharm-top-bar">
+                <div class="pycharm-tab"><span class="py-icon">🐍</span> ex2.py</div>
+                <button class="btn-run" onclick="runCode(3)">▶ تشغيل البرنامج (Run)</button>
+            </div>
+            <div class="pycharm-editor">
+                <div class="line-numbers">1<br>2<br>3<br>4<br>5</div>
+                <div class="code-area">
+                    <div class="code-line">a = <span class="num">9</span></div>
+                    <div class="code-line">b = <span class="num">3</span></div>
+                    <div class="code-line"><span class="fn">print</span>(a <input type="text" class="blank-input" id="q3_b1" style="width: 45px;" placeholder="جمع"> b)</div>
+                    <div class="code-line"><span class="fn">print</span>(a <input type="text" class="blank-input" id="q3_b2" style="width: 45px;" placeholder="ضرب"> b)</div>
+                    <div class="code-line"><span class="fn">print</span>(a <input type="text" class="blank-input" id="q3_b3" style="width: 45px;" placeholder="قسمة"> b)</div>
+                </div>
+            </div>
+            <div class="pycharm-console">
+                <div class="console-header"><span>Run: ex2</span></div>
+                <div class="console-path">C:\Users\Student\PycharmProjects\g10review\venv\Scripts\python.exe ex2.py</div>
+                <div class="console-output" id="out3"><span class="console-placeholder">اضغطي على زر ▶ تشغيل البرنامج لعرض المخرجات هنا...</span></div>
+            </div>
+        </div>
+        <div class="feedback" id="feed3"></div>
+    </div>
+
+    <!-- السؤال 4 -->
+    <div class="question-card" id="q4">
+        <div class="question-header">
+            <h3>4. دالة الإدخال input والتحويل</h3>
+            <span class="score-badge">الدرجة: 3</span>
+        </div>
+        <p class="q-desc">اطلبي من المستخدم إدخال السعر في المتغير <code class="inline-code">price</code> ثم حولي نوع المتغير إلى عدد عشري واطبعيه.</p>
+        <div class="pycharm-ide">
+            <div class="pycharm-top-bar">
+                <div class="pycharm-tab"><span class="py-icon">🐍</span> ex3.py</div>
+                <button class="btn-run" onclick="runCode(4)">▶ تشغيل البرنامج (Run)</button>
+            </div>
+            <div class="pycharm-editor">
+                <div class="line-numbers">1<br>2</div>
+                <div class="code-area">
+                    <div class="code-line">price = <input type="text" class="blank-input" id="q4_b1" style="width: 80px;" placeholder="الإدخال">(<span class="str">'enter price:'</span>)</div>
+                    <div class="code-line"><span class="fn">print</span>(<input type="text" class="blank-input" id="q4_b2" style="width: 80px;" placeholder="عشري">(price))</div>
+                </div>
+            </div>
+            <div class="pycharm-console">
+                <div class="console-header"><span>Run: ex3</span></div>
+                <div class="console-path">C:\Users\Student\PycharmProjects\g10review\venv\Scripts\python.exe ex3.py</div>
+                <div class="console-output" id="out4"><span class="console-placeholder">اضغطي على زر ▶ تشغيل البرنامج لعرض المخرجات هنا...</span></div>
+            </div>
+        </div>
+        <div class="feedback" id="feed4"></div>
+    </div>
+
+    <!-- السؤال 5 -->
+    <div class="question-card" id="q5">
+        <div class="question-header">
+            <h3>5. السلاسل النصية (Strings)</h3>
+            <span class="score-badge">الدرجة: 2</span>
+        </div>
+        <p class="q-desc">أنشئي سلسلة نصية باسم <code class="inline-code">kuwait</code> مخزنة في المتغير <code class="inline-code">country</code> واطبعيه.</p>
+        <div class="pycharm-ide">
+            <div class="pycharm-top-bar">
+                <div class="pycharm-tab"><span class="py-icon">🐍</span> ex3_str.py</div>
+                <button class="btn-run" onclick="runCode(5)">▶ تشغيل البرنامج (Run)</button>
+            </div>
+            <div class="pycharm-editor">
+                <div class="line-numbers">1<br>2</div>
+                <div class="code-area">
+                    <div class="code-line">country = <input type="text" class="blank-input" id="q5_b1" style="width: 110px;" placeholder="النص"></div>
+                    <div class="code-line"><span class="fn">print</span>(<input type="text" class="blank-input" id="q5_b2" style="width: 90px;" placeholder="المتغير">)</div>
+                </div>
+            </div>
+            <div class="pycharm-console">
+                <div class="console-header"><span>Run: ex3_str</span></div>
+                <div class="console-path">C:\Users\Student\PycharmProjects\g10review\venv\Scripts\python.exe ex3_str.py</div>
+                <div class="console-output" id="out5"><span class="console-placeholder">اضغطي على زر ▶ تشغيل البرنامج لعرض المخرجات هنا...</span></div>
+            </div>
+        </div>
+        <div class="feedback" id="feed5"></div>
+    </div>
+
+    <!-- السؤال 6 -->
+    <div class="question-card" id="q6">
+        <div class="question-header">
+            <h3>6. تقطيع السلاسل النصية (Slicing)</h3>
+            <span class="score-badge">الدرجة: 3</span>
+        </div>
+        <p class="q-desc">اقطعي السلسلة النصية المخزنة في المتغير <code class="inline-code">bug</code> إلى كلمتين ذات معنى (<code class="inline-code">lady</code> و <code class="inline-code">bird</code>) واطبعيهما.</p>
+        <div class="pycharm-ide">
+            <div class="pycharm-top-bar">
+                <div class="pycharm-tab"><span class="py-icon">🐍</span> ex4.py</div>
+                <button class="btn-run" onclick="runCode(6)">▶ تشغيل البرنامج (Run)</button>
+            </div>
+            <div class="pycharm-editor">
+                <div class="line-numbers">1<br>2<br>3<br>4<br>5</div>
+                <div class="code-area">
+                    <div class="code-line">bug = <span class="str">'ladybird'</span></div>
+                    <div class="code-line">word1 = bug[<input type="text" class="blank-input" id="q6_b1" style="width: 65px;" placeholder="الجزء 1">]</div>
+                    <div class="code-line">word2 = bug[<input type="text" class="blank-input" id="q6_b2" style="width: 65px;" placeholder="الجزء 2">]</div>
+                    <div class="code-line"><span class="fn">print</span>(word1)</div>
+                    <div class="code-line"><span class="fn">print</span>(word2)</div>
+                </div>
+            </div>
+            <div class="pycharm-console">
+                <div class="console-header"><span>Run: ex4</span></div>
+                <div class="console-path">C:\Users\Student\PycharmProjects\g10review\venv\Scripts\python.exe ex4.py</div>
+                <div class="console-output" id="out6"><span class="console-placeholder">اضغطي على زر ▶ تشغيل البرنامج لعرض المخرجات هنا...</span></div>
+            </div>
+        </div>
+        <div class="feedback" id="feed6"></div>
+    </div>
+
+    <!-- السؤال 7 -->
+    <div class="question-card" id="q7">
+        <div class="question-header">
+            <h3>7. الفهرسة (Indexing)</h3>
+            <span class="score-badge">الدرجة: 2</span>
+        </div>
+        <p class="q-desc">اطبعي الحرف الأول في المتغير <code class="inline-code">fruit</code> باستخدام الفهرسة.</p>
+        <div class="pycharm-ide">
+            <div class="pycharm-top-bar">
+                <div class="pycharm-tab"><span class="py-icon">🐍</span> ex5.py</div>
+                <button class="btn-run" onclick="runCode(7)">▶ تشغيل البرنامج (Run)</button>
+            </div>
+            <div class="pycharm-editor">
+                <div class="line-numbers">1<br>2</div>
+                <div class="code-area">
+                    <div class="code-line">fruit = <span class="str">'banana'</span></div>
+                    <div class="code-line"><span class="fn">print</span>(fruit[<input type="text" class="blank-input" id="q7_b1" style="width: 55px;" placeholder="الفهرس">])</div>
+                </div>
+            </div>
+            <div class="pycharm-console">
+                <div class="console-header"><span>Run: ex5</span></div>
+                <div class="console-path">C:\Users\Student\PycharmProjects\g10review\venv\Scripts\python.exe ex5.py</div>
+                <div class="console-output" id="out7"><span class="console-placeholder">اضغطي على زر ▶ تشغيل البرنامج لعرض المخرجات هنا...</span></div>
+            </div>
+        </div>
+        <div class="feedback" id="feed7"></div>
+    </div>
+
+    <!-- السؤال 8 -->
+    <div class="question-card" id="q8">
+        <div class="question-header">
+            <h3>8. جمع وتكرار السلاسل النصية</h3>
+            <span class="score-badge">الدرجة: 3</span>
+        </div>
+        <p class="q-desc">اجمعي السلسلة النصية <code class="inline-code">A</code> والسلسلة <code class="inline-code">Z</code> واطبعي النتيجة، ثم كرري المتغير <code class="inline-code">star</code> 5 مرات.</p>
+        <div class="pycharm-ide">
+            <div class="pycharm-top-bar">
+                <div class="pycharm-tab"><span class="py-icon">🐍</span> ex6_7.py</div>
+                <button class="btn-run" onclick="runCode(8)">▶ تشغيل البرنامج (Run)</button>
+            </div>
+            <div class="pycharm-editor">
+                <div class="line-numbers">1<br>2<br>3<br>4<br>5</div>
+                <div class="code-area">
+                    <div class="code-line">A = <span class="str">'straw'</span></div>
+                    <div class="code-line">Z = <span class="str">'berry'</span></div>
+                    <div class="code-line"><span class="fn">print</span>(A <input type="text" class="blank-input" id="q8_b1" style="width: 45px;" placeholder="دمج"> Z)</div>
+                    <div class="code-line">star = <span class="str">'*'</span></div>
+                    <div class="code-line"><span class="fn">print</span>(star <input type="text" class="blank-input" id="q8_b2" style="width: 45px;" placeholder="تكرار"> <span class="num">5</span>)</div>
+                </div>
+            </div>
+            <div class="pycharm-console">
+                <div class="console-header"><span>Run: ex6_7</span></div>
+                <div class="console-path">C:\Users\Student\PycharmProjects\g10review\venv\Scripts\python.exe ex6_7.py</div>
+                <div class="console-output" id="out8"><span class="console-placeholder">اضغطي على زر ▶ تشغيل البرنامج لعرض المخرجات هنا...</span></div>
+            </div>
+        </div>
+        <div class="feedback" id="feed8"></div>
+    </div>
+
+    <!-- السؤال 9 -->
+    <div class="question-card" id="q9">
+        <div class="question-header">
+            <h3>9. تنسيق النصوص (F-Strings)</h3>
+            <span class="score-badge">الدرجة: 2</span>
+        </div>
+        <p class="q-desc">ضمني المتغير <code class="inline-code">friend</code> في نص المتغير <code class="inline-code">greet</code> ثم اطبعيه.</p>
+        <div class="pycharm-ide">
+            <div class="pycharm-top-bar">
+                <div class="pycharm-tab"><span class="py-icon">🐍</span> ex8.py</div>
+                <button class="btn-run" onclick="runCode(9)">▶ تشغيل البرنامج (Run)</button>
+            </div>
+            <div class="pycharm-editor">
+                <div class="line-numbers">1<br>2<br>3</div>
+                <div class="code-area">
+                    <div class="code-line">friend = <span class="str">'Dana'</span></div>
+                    <div class="code-line">greet = <input type="text" class="blank-input" id="q9_b1" style="width: 40px;" placeholder="حرف"><span class="str">'Hi my best friend </span><input type="text" class="blank-input" id="q9_b2" style="width: 95px;" placeholder="المتغير"><span class="str">, happy eid for you'</span></div>
+                    <div class="code-line"><span class="fn">print</span>(greet)</div>
+                </div>
+            </div>
+            <div class="pycharm-console">
+                <div class="console-header"><span>Run: ex8</span></div>
+                <div class="console-path">C:\Users\Student\PycharmProjects\g10review\venv\Scripts\python.exe ex8.py</div>
+                <div class="console-output" id="out9"><span class="console-placeholder">اضغطي على زر ▶ تشغيل البرنامج لعرض المخرجات هنا...</span></div>
+            </div>
+        </div>
+        <div class="feedback" id="feed9"></div>
+    </div>
+
+    <div class="footer">
+        <div class="total-score">🌟 الدرجة النهائية: <span id="totalScore">0</span> من 22 🌟</div>
+        <button class="btn-finish" onclick="finishAndSend()">💾 احفظي عملكِ كملف PDF وأرسليه للمعلمة</button>
+        
+        <div class="email-instructions" id="emailInstructions">
+            <h3>🎉 أحسنتِ يا مبدعة! 🎉</h3>
+            <p>1. من نافذة الطباعة التي ستظهر الآن، اختاري <b>"Save as PDF"</b> أو <b>"حفظ بتنسيق PDF"</b> لحفظ ورقة عملكِ مع النتائج.</p>
+            <p>2. بعد حفظ الملف على جهازكِ، اضغطي على الزر أدناه لفتح البريد الإلكتروني وإرفاق الملف:</p>
+            <a id="mailtoLink" href="#">📧 إرسال إلى: T273092400282@moe.edu.kw</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    let scores = {1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0};
+    const maxScores = {1:2, 2:2, 3:3, 4:3, 5:2, 6:3, 7:2, 8:3, 9:2};
+
+    function showResult(qNum, score, status, outputHtml, feedbackMsg) {
+        scores[qNum] = score;
+        let total = Object.values(scores).reduce((a, b) => a + b, 0);
+        document.getElementById('totalScore').innerText = total;
+
+        let outEl = document.getElementById('out' + qNum);
+        outEl.innerHTML = outputHtml;
+
+        let feed = document.getElementById('feed' + qNum);
+        feed.style.display = 'block';
+        feed.className = 'feedback ' + status;
+        
+        let icon = status === 'correct' ? '🏆' : (status === 'partial' ? '💡' : '🔧');
+        feed.innerHTML = `<strong>${icon} الدرجة المستحقة: ${score} من ${maxScores[qNum]}</strong><br><b>التغذية الراجعة:</b> ${feedbackMsg}`;
+    }
+
+    function runCode(qNum) {
+        switch(qNum) {
+            case 1: {
+                let b1 = document.getElementById('q1_b1').value.trim();
+                let b2 = document.getElementById('q1_b2').value.trim();
+                if (b1 === 'year' && b2 === 'year') {
+                    showResult(1, 2, 'correct', '2026', 'رائعة! عرّفتِ المتغير year وطبعتِ قيمته بنجاح.');
+                } else if (b1 === 'year' || b2 === 'year') {
+                    showResult(1, 1, 'partial', '<span class="console-error">NameError: name is not defined</span>', 'تأكدي من كتابة اسم المتغير year بنفس الصيغة في السطرين.');
+                } else {
+                    showResult(1, 0, 'incorrect', '<span class="console-error">SyntaxError: invalid syntax</span>', 'اكتبي year في الفراغ الأول لتعريف المتغير، و year في الفراغ الثاني لطباعته.');
+                }
+                break;
+            }
+            case 2: {
+                let b1 = document.getElementById('q2_b1').value.trim();
+                if (b1 === 'type') {
+                    showResult(2, 2, 'correct', "2026\n&lt;class 'int'&gt;", 'ممتازة! دالة type() أظهرت أن نوع المتغير عدد صحيح int.');
+                } else {
+                    showResult(2, 0, 'incorrect', '2026\n<span class="console-error">NameError: function is not defined</span>', 'الدالة المسؤولة عن إظهار نوع المتغير في بايثون هي type.');
+                }
+                break;
+            }
+            case 3: {
+                let b1 = document.getElementById('q3_b1').value.trim();
+                let b2 = document.getElementById('q3_b2').value.trim();
+                let b3 = document.getElementById('q3_b3').value.trim();
+                let pts = (b1 === '+' ? 1 : 0) + (b2 === '*' ? 1 : 0) + (b3 === '/' ? 1 : 0);
+                
+                if (pts === 3) {
+                    showResult(3, 3, 'correct', '12\n27\n3.0', 'إجابة متقنة! جميع العمليات الحسابية (+ للجمع، * للضرب، / للقسمة) صحيحة.');
+                } else if (pts > 0) {
+                    let l1 = b1 === '+' ? '12' : '<span class="console-error">Error in line 3</span>';
+                    let l2 = b2 === '*' ? '27' : '<span class="console-error">Error in line 4</span>';
+                    let l3 = b3 === '/' ? '3.0' : '<span class="console-error">Error in line 5</span>';
+                    showResult(3, pts, 'partial', `${l1}\n${l2}\n${l3}`, 'لديكِ إجابة صحيحة في بعض العمليات، راجعي الرموز الحسابية: الجمع (+)، الضرب (*)، القسمة (/).');
+                } else {
+                    showResult(3, 0, 'incorrect', '<span class="console-error">SyntaxError: invalid syntax</span>', 'استخدمي الرموز الحسابية: + للجمع، * للضرب، / للقسمة.');
+                }
+                break;
+            }
+            case 4: {
+                let b1 = document.getElementById('q4_b1').value.trim();
+                let b2 = document.getElementById('q4_b2').value.trim();
+                if (b1 === 'input' && b2 === 'float') {
+                    showResult(4, 3, 'correct', 'enter price:<span style="color:#6a8759">3.5</span>\n3.5', 'مبدعة! دالة input تستقبل القيمة من المستخدم ودالة float تحولها لعدد عشري.');
+                } else if (b1 === 'input' || b2 === 'float') {
+                    let pts = 1.5;
+                    let msg = b1 === 'input' ? 'استخدمتِ input بشكل صحيح، تذكري استخدام float للتحويل إلى عدد عشري.' : 'استخدمتِ float بشكل صحيح، تذكري استخدام input لإدخال البيانات.';
+                    showResult(4, pts, 'partial', '<span class="console-error">NameError: check function name</span>', msg);
+                } else {
+                    showResult(4, 0, 'incorrect', '<span class="console-error">SyntaxError: invalid syntax</span>', 'نستخدم input للإدخال من لوحة المفاتيح، و float لتحويل النص إلى عدد عشري.');
+                }
+                break;
+            }
+            case 5: {
+                let b1 = document.getElementById('q5_b1').value.trim();
+                let b2 = document.getElementById('q5_b2').value.trim();
+                let validStr = (b1 === "'kuwait'" || b1 === '"kuwait"' || b1 === "'Kuwait'" || b1 === '"Kuwait"');
+                let pts = (validStr ? 1 : 0) + (b2 === 'country' ? 1 : 0);
+                
+                if (pts === 2) {
+                    let cleanVal = b1.slice(1, -1);
+                    showResult(5, 2, 'correct', cleanVal, 'أحسنتِ! وضعتِ السلسلة النصية بين علامتي تنصيص وطبعتِ المتغير country بشكل سليم.');
+                } else if (pts === 1) {
+                    let msg = !validStr ? 'تأكدي من وضع كلمة kuwait بين علامتي تنصيص مفردة أو مزدوجة.' : 'تأكدي من كتابة اسم المتغير country داخل دالة print.';
+                    showResult(5, 1, 'partial', '<span class="console-error">NameError / SyntaxError</span>', msg);
+                } else {
+                    showResult(5, 0, 'incorrect', '<span class="console-error">SyntaxError: invalid syntax</span>', "اكتبي 'kuwait' في الفراغ الأول، واسم المتغير country في الفراغ الثاني.");
+                }
+                break;
+            }
+            case 6: {
+                let b1 = document.getElementById('q6_b1').value.replace(/\s+/g, '');
+                let b2 = document.getElementById('q6_b2').value.replace(/\s+/g, '');
+                let ok1 = (b1 === ':4' || b1 === '0:4');
+                let ok2 = (b2 === '4:' || b2 === '4:8');
+                let pts = (ok1 ? 1.5 : 0) + (ok2 ? 1.5 : 0);
+
+                if (pts === 3) {
+                    showResult(6, 3, 'correct', 'lady\nbird', 'تقطيع دقيق ورائع! قسمتي الكلمة إلى lady و bird بنجاح.');
+                } else if (pts > 0) {
+                    showResult(6, 1.5, 'partial', 'يوجد خطأ في أحد حدود التقطيع', 'تذكري أن الحروف تبدأ من الفهرس 0، لذا الكلمة الأولى [:4] والثانية [4:].');
+                } else {
+                    showResult(6, 0, 'incorrect', '<span class="console-error">SyntaxError: invalid slice</span>', 'لاقتطاع أول 4 أحرف نكتب :4 ولباقي الكلمة نكتب 4:.');
+                }
+                break;
+            }
+            case 7: {
+                let b1 = document.getElementById('q7_b1').value.trim();
+                if (b1 === '0') {
+                    showResult(7, 2, 'correct', 'b', 'ممتازة! الفهرسة في بايثون تبدأ دائماً من الرقم 0 للحرف الأول.');
+                } else {
+                    showResult(7, 0, 'incorrect', b1 === '1' ? 'a  <span class="console-error">(هذا الحرف الثاني!)</span>' : '<span class="console-error">IndexError / SyntaxError</span>', 'تذكري أن العد في البرمجة يبدأ من 0 وليس 1، لذا الحرف الأول فهرسه 0.');
+                }
+                break;
+            }
+            case 8: {
+                let b1 = document.getElementById('q8_b1').value.trim();
+                let b2 = document.getElementById('q8_b2').value.trim();
+                let pts = (b1 === '+' ? 1.5 : 0) + (b2 === '*' ? 1.5 : 0);
+
+                if (pts === 3) {
+                    showResult(8, 3, 'correct', 'strawberry\n*****', 'عمل رائع! علامة + تجمع السلاسل النصية وعلامة * تكررها.');
+                } else if (pts > 0) {
+                    showResult(8, 1.5, 'partial', 'أحد المعاملين غير صحيح', 'لدمج السلاسل النصية نستخدم +، ولتكرارها نستخدم *.');
+                } else {
+                    showResult(8, 0, 'incorrect', '<span class="console-error">SyntaxError: invalid syntax</span>', 'استخدمي + لجمع النصوص، و * لتكرار النص 5 مرات.');
+                }
+                break;
+            }
+            case 9: {
+                let b1 = document.getElementById('q9_b1').value.trim();
+                let b2 = document.getElementById('q9_b2').value.replace(/\s+/g, '');
+                let ok1 = (b1 === 'f' || b1 === 'F');
+                let ok2 = (b2 === '{friend}');
+                let pts = (ok1 ? 1 : 0) + (ok2 ? 1 : 0);
+
+                if (pts === 2) {
+                    showResult(9, 2, 'correct', 'Hi my best friend Dana, happy eid for you', 'رائعة جداً! استخدمتِ f-string والأقواس المعقوفة {friend} لتضمين المتغير بنجاح.');
+                } else if (pts === 1) {
+                    let outTxt = !ok1 ? 'Hi my best friend {friend}, happy eid for you' : 'Hi my best friend friend, happy eid for you';
+                    showResult(9, 1, 'partial', outTxt, 'تأكدي من كتابة حرف f قبل علامة التنصيص ووضع اسم المتغير داخل أقواس معقوفة {friend}.');
+                } else {
+                    showResult(9, 0, 'incorrect', '<span class="console-error">SyntaxError: invalid syntax</span>', 'اكتبي حرف f قبل النص، واكتبي {friend} لتضمين قيمة المتغير.');
+                }
+                break;
+            }
+        }
+    }
+
+    function finishAndSend() {
+        let name = document.getElementById('studentName').value.trim();
+        let cls = document.getElementById('studentClass').value.trim();
+        
+        if (!name || !cls) {
+            alert('عزيزتي المتعلمة، يرجى كتابة اسمكِ وصفكِ في الأعلى قبل حفظ الملف!');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            return;
+        }
+
+        let total = document.getElementById('totalScore').innerText;
+        document.getElementById('emailInstructions').style.display = 'block';
+        
+        let mailto = `mailto:T273092400282@moe.edu.kw?subject=${encodeURIComponent('حل نشاط مراجعة تقنية المعلومات - ' + name + ' - الصف ' + cls)}&body=${encodeURIComponent('السلام عليكم ورحمة الله وبركاته،\n\nمرفق لكم ملف الـ PDF الخاص بحل النشاط التفاعلي.\n\nبيانات المتعلمة:\nالاسم: ' + name + '\nالصف: ' + cls + '\nالدرجة الحاصلة عليها: ' + total + ' من 22\n\n(يرجى إرفاق ملف الـ PDF المحفوظ قبل الضغط على إرسال)')}`;
+        
+        document.getElementById('mailtoLink').href = mailto;
+
+        setTimeout(() => {
+            window.print();
+        }, 500);
+    }
+</script>
+
+</body>
+</html>
